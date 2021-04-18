@@ -4,6 +4,7 @@ import com.makeathon.sehad.models.signin.AuthenticationRequest;
 import com.makeathon.sehad.models.signin.AuthenticationResponse;
 import com.makeathon.sehad.services.LogInService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -43,5 +44,10 @@ public class Authentication {
         }
         final String jwt = login.generateJWT(authenticationRequest);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    }
+
+    @RequestMapping(value = "/validate/jwt", method = RequestMethod.GET)
+    public ResponseEntity<?> validateJwt() {
+        return ResponseEntity.ok("Validated");
     }
 }

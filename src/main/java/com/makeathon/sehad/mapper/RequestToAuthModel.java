@@ -3,6 +3,7 @@ package com.makeathon.sehad.mapper;
 import com.makeathon.sehad.models.db.Authentication;
 import com.makeathon.sehad.models.db.Authority;
 import com.makeathon.sehad.models.payload.Profile;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class RequestToAuthModel {
     public void mapToAuthModel(Authentication auth, Profile request) {
         auth.setUserId(request.getUserId());
         auth.setEmail(request.getEmail());
-        auth.setPassword(request.getPassword());
+        auth.setPassword(new BCryptPasswordEncoder().encode(request.getPassword()));
         auth.setDisabled(Boolean.FALSE);
         auth.setDisabledDate(null);
 

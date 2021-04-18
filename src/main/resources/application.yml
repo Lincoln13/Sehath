@@ -25,52 +25,56 @@ zuul:
       serviceId: user-profile-service
       url: "http://localhost:9090/"
       strip-prefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
     serviceB:
       path: /doctor/**
       serviceId: user-profile-service
       url: "http://localhost:9090/"
       strip-prefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
     serviceC:
       path: /ailment/**
       serviceId: user-profile-service
       url: "http://localhost:9090/"
       strip-prefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
     serviceD:
       path: /hospital/**
       serviceId: user-profile-service
       url: "http://localhost:9090/"
       strip-prefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
 
----
-
-spring:
-  profiles: test
-
-eureka:
-  client:
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://sehatheureka-env.eba-my3ybatn.us-east-2.elasticbeanstalk.com/eureka/
-
-zuul:
-  routes:
-    serviceA:
-      path: /profile/**
-      serviceId: user-profile-service
-      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
-      strip-prefix: false
-    serviceB:
-      path: /doctor/**
-      serviceId: user-profile-service
-      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
-      strip-prefix: false
-    serviceC:
-      path: /ailment/**
-      serviceId: user-profile-service
-      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
-      strip-prefix: false
-    serviceD:
-      path: /hospital/**
-      serviceId: user-profile-service
-      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
-      strip-prefix: false
+#---
+#
+#spring:
+#  profiles: test
+#
+#eureka:
+#  client:
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://sehatheureka-env.eba-my3ybatn.us-east-2.elasticbeanstalk.com/eureka/
+#
+#zuul:
+#  routes:
+#    serviceA:
+#      path: /profile/**
+#      serviceId: user-profile-service
+#      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
+#      strip-prefix: false
+#    serviceB:
+#      path: /doctor/**
+#      serviceId: user-profile-service
+#      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
+#      strip-prefix: false
+#    serviceC:
+#      path: /ailment/**
+#      serviceId: user-profile-service
+#      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
+#      strip-prefix: false
+#    serviceD:
+#      path: /hospital/**
+#      serviceId: user-profile-service
+#      url: "http://sehath-profile.us-east-2.elasticbeanstalk.com/"
+#      strip-prefix: false
